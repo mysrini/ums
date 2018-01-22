@@ -1,0 +1,17 @@
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:1.3.1.RELEASE"
+	}
+}​
+
+curl -i -H "Content-Type:application/json" -d '{"userId":"user-123", "amount":"package-123"}' http://localhost:8080/subscriptions
+
+
+curl -i -H "Content-Type:application/json" -d '{"userId":"user-123", "amount":"package-123"}' localhost:8080/reoccurringPayment​
+
+cf push billing -p applications/billing/build/libs/billing-0.0.1-SNAPSHOT.jar -m 512M --random-route --no-start
+
+curl -i -H "Content-Type:application/json" -d '{"userId":"user-123", "amount":"package-123"}' https://ums-nomistic-bani.apps.cumuluslabs.io/subscriptions​
+
+

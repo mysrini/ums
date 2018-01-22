@@ -1,2 +1,4 @@
 server:
   port: 8080
+
+billingServiceURL: http://localhost:8081/reoccurringPayment

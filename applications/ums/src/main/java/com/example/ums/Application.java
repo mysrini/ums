@@ -1,15 +1,18 @@
 package com.example.ums;
 
+import com.example.billing.BillingClient;
 import com.example.subscriptions.SubscriptionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -21,6 +24,9 @@ public class Application implements CommandLineRunner {
 
     @Autowired
     NamedParameterJdbcTemplate datasource;
+
+    @Value("${billingServiceURL}")
+    String billingClient;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -36,5 +42,12 @@ public class Application implements CommandLineRunner {
     @Bean
     public SubscriptionRepository subscriptionRepository() {
         return new SubscriptionRepository(datasource);
+    }
+
+
+
+    @Bean
+    public BillingClient createBillingClient(){
+        return new BillingClient(billingClient);
     }
 }
