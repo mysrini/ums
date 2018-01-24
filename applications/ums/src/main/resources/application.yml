@@ -1,4 +1,12 @@
+spring:
+  application:
+    name: ums
+
 server:
   port: 8080
 
-billingServiceURL: http://localhost:8081/reoccurringPayment
+billingServiceURL: http://billing/reoccurringPayment
+security:
+  basic:
+    enabled: false
+#billingServiceURL: https://billing-semipractical-portfire.apps.cumuluslabs.io/reoccurringPayment

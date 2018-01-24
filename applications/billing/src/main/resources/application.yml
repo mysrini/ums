@@ -1,2 +1,9 @@
+spring:
+  application:
+    name: billing
+
 server:
  port: 8081
+security:
+  basic:
+    enabled: false
